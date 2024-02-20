@@ -14,15 +14,4 @@ const firebaseConfig = {
   messagingSenderId: "746742242068",
   appId: "1:746742242068:web:e58bc5a42bb9a5bc810001"
 };
-/*
-// tester
-const firebaseConfig = {
-  apiKey: "AIzaSyDN6lgn5g0VqMK_m8-bU56JdN2t2BRUTgQ",
-  authDomain: "tester-2-949ac.firebaseapp.com",
-  projectId: "tester-2-949ac",
-  storageBucket: "tester-2-949ac.appspot.com",
-  messagingSenderId: "817793978234",
-  appId: "1:817793978234:web:4dfab753e4259bcb74d0c3",
-  measurementId: "G-W9WYQRDRW0"
-};*/
 export default firebaseConfig;
