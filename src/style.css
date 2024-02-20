@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;600;900&display=swap');
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    font-family: 'Noto Sans Thai', sans-serif;
+}
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+    margin: 0;
+}
+
+/* Remove list styles on ul, ol elements */
+ul,
+ol {
+    padding: 0;
+    list-style: none;
+}
+
+/* Set core body defaults */
+body {
+    min-height: 100vh;
+    scroll-behavior: smooth;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+}
+
+/* Remove focus outline for non-keyboard users */
+a:not(:focus):not(:active) {
+    text-decoration: none;
+}
+
+/* Reset heading sizes */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+/* Reset form elements */
+button,
+input,
+optgroup,
+select,
+textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.15;
+}
+
+/* Remove inheritance and border-radius for button */
+button {
+    overflow: visible;
+    text-transform: none;
+    -webkit-appearance: button;
+}
+
+/* Remove text input spacing */
+[type="text"],
+[type="password"],
+[type="number"],
+[type="email"],
+[type="tel"],
+[type="url"],
+[type="search"],
+[type="tel"],
+[type="color"] {
+    padding: 0;
+    line-height: inherit;
+}
+
+/* Remove the inner border and padding in Firefox */
+[type="search"]::-webkit-search-decoration,
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-results-button,
+[type="search"]::-webkit-search-results-decoration {
+    display: none;
+}
+
+/* Reset button and select elements */
+button,
+select {
+    text-transform: none;
+}
+
+/* Remove default button styling in Edge and Firefox */
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+    -webkit-appearance: button;
+}
+
+/* Remove padding and border in Firefox */
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+    padding: 0;
+    border-style: none;
+}
+
+/* Reset table border spacing */
+table {
+    border-collapse: collapse;
+}
+
+/* Reset visually hidden element style */
+[hidden] {
+    display: none;
+}
+
+/* Reset anchor color and text-decoration */
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
