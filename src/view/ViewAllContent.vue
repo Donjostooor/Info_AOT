@@ -14,7 +14,7 @@
             <div class="card-grid">
                 <div v-if="paginatedCards !== null" v-for="(card, index) in paginatedCards" :key="index" class="card">
                     <router-link to="">
-                        <img v-if="card.ImageURL !==''" :src="card.ImageURL" class="card-img" alt="Card Image">
+                        <img v-if="card.ImageURL !== ''" :src="card.ImageURL" class="card-img" alt="Card Image">
                         <img v-else :src="NoImage" class="card-img" alt="Card Image">
                         <div class="card-body">
                             <div class="datetags">
@@ -29,11 +29,12 @@
             </div>
         </div>
         <div v-if="cards.length === 0">
-            <h3 class="flex text-center" style="padding-right: 8vw !important;">Limit fetch Data From FireBase <br>Data Can fetch again Next Day 00.00 AM</h3>
+            <h3 class="flex text-center" style="padding-right: 8vw !important;">Limit fetch Data From FireBase <br>Data Can
+                fetch again Next Day 00.00 AM</h3>
         </div>
         <div class="paginated">
             <button class="btn btn-secondary" @click="prevPage" :disabled="currentPage === 1">Previous</button>
-            <button class="btn btn-primary" @click="nextPage" :disabled="currentPage === totalPages">Next</button> 
+            <button class="btn btn-primary" @click="nextPage" :disabled="currentPage === totalPages">Next</button>
         </div>
     </div>
     <navfooter />
@@ -63,16 +64,19 @@ export default {
             imghero: {
                 Topicbg: TopicSec2
             },
-            NoImage:noimg,
+            NoImage: noimg,
             currentPage: 1,
             cardsPerPage: 9,
         }
     },
     computed: {
         paginatedCards() {
+            // Sort the cards by Date in ascending order
+            const sortedCards = this.cards.slice().sort((a, b) => new Date(b.Date) - new Date(a.Date));
             const startIndex = (this.currentPage - 1) * this.cardsPerPage;
             const endIndex = startIndex + this.cardsPerPage;
-            return this.cards.slice(startIndex, endIndex).reverse();
+            // Slice the sorted cards array
+            return sortedCards.slice(startIndex, endIndex);
         },
         totalPages() {
             return Math.ceil(this.cards.length / this.cardsPerPage);
@@ -282,12 +286,14 @@ img {
     padding-left: 1vw;
     padding-right: 1vw;
 }
+
 .paginated {
     padding: 1rem;
     display: flex;
     justify-content: center;
     gap: 1rem;
 }
+
 .card {
     border: 0px;
     animation: cardDown 0.5s forwards;

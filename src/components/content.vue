@@ -11,18 +11,35 @@
                 </div>
                 <div v-show="item.ImageURL !== ''" class="content-image">
                     <img :src="item.ImageURL" alt="Content Image">
-                </div>
-                <div class="content-text">
                     <div v-for="i in 100">
                         <!-- Use a template loop to render p tags for Content1 to Content100 -->
+                        <img v-if="item[`ImageURL${i}`]" :src="item[`ImageURL${i}`]" alt="Content Image" >
+                    </div>
+                </div>
+                    
+                <div class="content-text">
+                    <div v-for="i in 200">
+                        <!-- Use a template loop to render p tags for Content1 to Content100 -->
                         <p v-if="item[`Content${i}`]">
-                            <b v-if="item[`Content${i}`].Bold === true">
+                            
+                            <p v-if="item[`Content${i}`].Bold === true">
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                {{ item[`Content${i}`].Text }}</b>
+                                <a v-if="item[`link${i}`]" :href="item[`link${i}`]" target="_blank">
+                                    {{ item[`Content${i}`].Text }}
+                                </a>
+                                <b v-else>{{ item[`Content${i}`].Text }}</b>
+                            </p>
                             <p v-else>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 {{ item[`Content${i}`] }}</p>
                         </p>
+                        
+                    </div>
+                </div>
+                <div v-show="item.ContentImg!== ''" class="content-image-grid">
+                    <div v-for="i in 100">
+                        <!-- Use a template loop to render p tags for Content1 to Content100 -->
+                        <img v-if="item[`ContentImg${i}`]" :src="item[`ContentImg${i}`]" class="ContentImg" alt="Content Image" >
                     </div>
                 </div>
             </div>
@@ -65,7 +82,6 @@ export default {
                         };
                     });
                 });
-                console.log(this.firebase)
             } catch (error) {
                 console.error('Error getting documents:', error);
                 this.error = error.message; // Set error message
@@ -108,6 +124,10 @@ export default {
 
 
 <style scoped>
+.test{
+    border: 1px solid red;
+    height: 100vh;
+}
 .content-body {
     margin-top: 0vh;
     padding: 1rem;
@@ -154,6 +174,10 @@ export default {
 .content-text {
     font-size: 16px;
     padding-top: 1vh;
+}
+.content-image-grid{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
 }
 
 </style>
