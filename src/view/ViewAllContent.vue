@@ -13,7 +13,7 @@
         <div class="viewall-body">
             <div class="card-grid">
                 <div v-if="paginatedCards !== null" v-for="(card, index) in paginatedCards" :key="index" class="card">
-                    <router-link to="">
+                    <router-link :to="getContentRoute(card)">
                         <img v-if="card.ImageURL !== ''" :src="card.ImageURL" class="card-img" alt="Card Image">
                         <img v-else :src="NoImage" class="card-img" alt="Card Image">
                         <div class="card-body">
@@ -156,6 +156,17 @@ export default {
             } catch (error) {
                 console.error('Error getting documents:', error);
             }
+        },
+        getContentRoute(card) {
+        const tagsMapping = {
+            'เกี่ยวกับหน่วยงาน': 'About',
+            'สำหรับประชาชน': 'Population',
+            'สำหรับเจ้าหน้าที่': 'Officer',
+            'มุมกฎหมาย': 'Law',    
+        };
+        const encodedTopic = encodeURIComponent(card.Topic);
+        const routeTags = tagsMapping[card.Tags] || card.Tags; // Fallback to original value if not in mapping
+        return `/Content/${routeTags}/${encodedTopic}`;
         },
         getTagClasses(tag) {
             const tagClasses = [];
